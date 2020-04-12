@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 
 
 def calc_sinusoidal_formula(x):
-    # return np.sin(x * 1.6 + 1.5) * 80 + 10
     return np.sin(x * 1.6 + 1.5)
 
 
@@ -36,8 +35,6 @@ def main():
 
     print(f'linear error difference: {e_lin_train[0] - e2test[0]}')
 
-    v_sin = determine_c_and_v(calc_sinusoidal_formula(x), y)
-
     v_sin_train = determine_c_and_v(calc_sinusoidal_formula(X_train), y_train)
     e_sin_train = calc_error(X_train, y_train, v_sin_train[0] * calc_sinusoidal_formula(X_train) + v_sin_train[1])
     print(f'sinusoidal training error: {e_sin_train}')
@@ -48,10 +45,10 @@ def main():
 
     print(f'sinusoidal error difference: {e_sin_train[0] - e_sin_test[0]}')
 
-    v_lin = determine_c_and_v(x, y)
-
     plt.plot(x, y, 'ro')
+    v_sin = determine_c_and_v(calc_sinusoidal_formula(x), y)
     plt.plot(x, v_sin[0] * calc_sinusoidal_formula(x) + v_sin[1])
+    v_lin = determine_c_and_v(x, y)
     plt.plot(x, v_lin[0] * x + v_lin[1])
     plt.show()
 
