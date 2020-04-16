@@ -29,11 +29,11 @@ def main():
     e_lin_train = calc_error(X_train, y_train, v_lin_train[0] * X_train + v_lin_train[1])
     print(f'linear training error: {e_lin_train}')
 
-    v2test = determine_c_and_v(X_test, y_test)
-    e2test = calc_error(X_test, y_test, v2test[0] * X_test + v2test[1])
-    print(f'linear testing error: {e2test}')
+    v_lin_test = determine_c_and_v(X_test, y_test)
+    e_lin_test = calc_error(X_test, y_test, v_lin_test[0] * X_test + v_lin_test[1])
+    print(f'linear testing error: {e_lin_test}')
 
-    print(f'linear error difference: {e_lin_train[0] - e2test[0]}')
+    print(f'linear error difference: {e_lin_train[0] - e_lin_test[0]}')
 
     v_sin_train = determine_c_and_v(transform_matrix_with_sinusoidal_formula(X_train), y_train)
     e_sin_train = calc_error(X_train, y_train, v_sin_train[0] * transform_matrix_with_sinusoidal_formula(X_train) + v_sin_train[1])
